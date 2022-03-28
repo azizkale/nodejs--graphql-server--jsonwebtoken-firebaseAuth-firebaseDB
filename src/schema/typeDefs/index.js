@@ -4,5 +4,9 @@ const typeDefs = gql `
   type Query {
     hello: String
   }
+
+  type Mutation {
+    loginFirebase(email:String, password:String): String
+  }
 `;
 module.exports = typeDefs;

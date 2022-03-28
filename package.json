@@ -12,6 +12,7 @@
     "dependencies": {
         "apollo-server": "^3.6.6",
         "dotenv": "^16.0.0",
+        "firebase": "^9.6.10",
         "graphql": "^16.3.0"
     },
     "devDependencies": {
