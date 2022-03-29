@@ -1,13 +1,15 @@
 const hello = require("./query/hello");
-const loginFirebase = require("./mutations/firebaseSignUp");
+const signUpFirebase = require("./mutations/firebaseSignUp");
+const signInFirebase = require("./mutations/firebaseSignIn");
 
 const resolvers = {
     Query: {
 
-        hello: () => { return "azzi" }
+        hello: hello
     },
     Mutation: {
-        loginFirebase: loginFirebase
+        signUpFirebase: signUpFirebase,
+        signInFirebase: signInFirebase,
     }
 }
 
