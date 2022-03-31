@@ -16,6 +16,7 @@ const typeDefs = gql `
   type Mutation {
     signUpFirebase(email:String, password:String): String
     signInFirebase(email:String, password:String): String
+    createUser(user:User):User
   }
 `;
 module.exports = typeDefs;
