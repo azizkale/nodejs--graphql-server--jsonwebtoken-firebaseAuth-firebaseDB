@@ -3,6 +3,7 @@ const signUpFirebase = require("./mutations/firebaseSignUp");
 const signInFirebase = require("./mutations/firebaseSignIn");
 const createUser = require("./mutations/createUser");
 import addBookToUser from './mutations/addBookToUser';
+import updateBook from './mutations/updateBook';
 
 const resolvers = {
     Query: {
@@ -12,7 +13,8 @@ const resolvers = {
         signUpFirebase: signUpFirebase,
         signInFirebase: signInFirebase,
         createUser: createUser,
-        addBookToUser: addBookToUser
+        addBookToUser: addBookToUser,
+        updateBook: updateBook
     }
 }
 

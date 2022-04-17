@@ -24,6 +24,7 @@ const typeDefs = gql `
     signInFirebase(email:String, password:String): String
     createUser(name:String, email:String):User
     addBookToUser(name: String, totalPageCount:Int, userId:ID):Book
+    updateBook(name:String, totalPageCount:Int, readPageCount:Int, userId:ID, bookId:ID):String
   }
 `;
 module.exports = typeDefs;
