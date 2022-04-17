@@ -5,5 +5,4 @@ class User {
         this.userId = userId;
     }
 }
-
 module.exports = User;

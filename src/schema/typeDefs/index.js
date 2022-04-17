@@ -10,7 +10,6 @@ const typeDefs = gql `
   }
   type Query {
     hello: String
-    getCurrentUserId:String
   }
 
   type Mutation {
