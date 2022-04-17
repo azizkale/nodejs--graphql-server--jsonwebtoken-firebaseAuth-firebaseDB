@@ -3,6 +3,7 @@ class User {
         this.name = name;
         this.email = email;
         this.userId = userId;
+        this.books = [];
     }
 }
 module.exports = User;

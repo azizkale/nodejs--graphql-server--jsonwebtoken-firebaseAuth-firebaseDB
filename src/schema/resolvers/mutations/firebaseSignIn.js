@@ -17,7 +17,7 @@ const signInFirebase = async(_, { email, password }) => {
     });
 
     if (accessToken == null)
-        return "Please try again"
+        return null
     else return accessToken;
 }
 
