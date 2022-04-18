@@ -14,19 +14,20 @@
     <a href="#" onclick="signOut();">Sign out</a>
     <script>
         function onSignIn(googleUser) {
-            var profile = googleUser.getBasicProfile();
+            let profile = googleUser.getBasicProfile();
             console.log(googleUser.xc.id_token);
+            localStorage.setItem("tokenid", googleUser.xc.id_token);
             return googleUser.xc.id_token
         }
 
         function signOut() {
             var auth2 = gapi.auth2.getAuthInstance();
             auth2.signOut().then(function() {
+                localStorage.removeItem("tokenid")
                 console.log('User signed out.');
             });
         }
     </script>
-    <!-- <script defer src="/resources/renderExample.js" type="application/javascript"></script> -->
 </body>
 
 </html>

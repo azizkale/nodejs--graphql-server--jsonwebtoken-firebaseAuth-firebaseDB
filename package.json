@@ -21,6 +21,8 @@
         "express": "^4.17.3",
         "firebase": "^9.6.10",
         "graphql": "^16.3.0",
+        "node-localstorage": "^2.2.1",
+        "open": "^8.4.0",
         "uuid": "^8.3.2"
     },
     "devDependencies": {
