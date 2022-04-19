@@ -2,7 +2,6 @@ const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const resolvers = require("./schema/resolvers");
 const typeDefs = require("./schema/typeDefs");
-import { LocalStorage } from 'node-localstorage'
 
 
 const PORT = process.env.PORT || 5000;
