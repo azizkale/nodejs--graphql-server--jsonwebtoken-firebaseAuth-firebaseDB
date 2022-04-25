@@ -16,7 +16,7 @@ const signUpFirebase = async(_, { email, password }) => {
         return errorMessage;
     });
     if (accessToken == null)
-        return "Please try again"
+        return null
     else return accessToken;
 }
 
