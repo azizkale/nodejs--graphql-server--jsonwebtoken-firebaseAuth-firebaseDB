@@ -6,6 +6,13 @@ const typeDefs = gql `
     email: String
     username: String
     password: String
+    books: [Book]
+    badges: [Badge]
+  }
+
+  type Badge {
+    homework: Int
+    participating: Int
   }
 
   type Book {
@@ -26,6 +33,7 @@ const typeDefs = gql `
     createUser(name:String, email:String):User
     addBookToUser(name: String, totalPageCount:Int, userId:ID):Book
     updateBook(name:String, totalPageCount:Int, readPageCount:Int, userId:ID, bookId:ID):String
+    addBadge(homework: Int, participating: Int, userId: ID):User
   }
 `;
 module.exports = typeDefs;
