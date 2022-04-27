@@ -2,18 +2,25 @@ const { gql } = require('apollo-server');
 
 const typeDefs = gql `
   type User {
-    userId: ID,
+    userId: ID
     email: String
     username: String
     password: String
     books: [Book]
     badges: [Badge]
+    groupId: ID
   }
 
   type Badge {
     homework: Int
     participating: Int
   }
+
+type Group {
+  name: String
+  groupId: ID
+  members : [User]
+}
 
   type Book {
     bookId: ID
@@ -34,6 +41,7 @@ const typeDefs = gql `
     addBookToUser(name: String, totalPageCount:Int, userId:ID):Book
     updateBook(name:String, totalPageCount:Int, readPageCount:Int, userId:ID, bookId:ID):String
     addBadge(homework: Int, participating: Int, userId: ID):User
+    createGroup(name: String): Group
   }
 `;
 module.exports = typeDefs;

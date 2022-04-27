@@ -1,4 +1,4 @@
-import { getDatabase, ref, set, onValue } from "firebase/database";
+import { getDatabase, ref, set } from "firebase/database";
 const firebaseApp = require("../../../tools/firebaseTools");
 
 const addBadge = async(_, { homework, participating, userId }) => {

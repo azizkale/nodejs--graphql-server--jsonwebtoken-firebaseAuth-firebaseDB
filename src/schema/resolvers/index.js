@@ -6,6 +6,7 @@ import addBookToUser from './mutations/addBookToUser';
 import updateBook from './mutations/updateBook';
 import userStatus from './query/userStatus';
 import addBadge from './mutations/addBadge';
+import createGroup from './mutations/createGroup';
 
 const resolvers = {
     Query: {
@@ -18,7 +19,8 @@ const resolvers = {
         createUser: createUser,
         addBookToUser: addBookToUser,
         updateBook: updateBook,
-        addBadge: addBadge
+        addBadge: addBadge,
+        createGroup: createGroup
     }
 }
 
