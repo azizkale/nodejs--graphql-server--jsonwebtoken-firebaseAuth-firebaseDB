@@ -16,11 +16,11 @@ const typeDefs = gql `
     participating: Int
   }
 
-type Group {
-  name: String
-  groupId: ID
-  members : [User]
-}
+  type Group {
+    name: String
+    groupId: ID
+    members : [User]
+  }
 
   type Book {
     bookId: ID
@@ -28,10 +28,16 @@ type Group {
     totalPageCount: Int
     readPageCount: Int
   }
+  
+  type Admin {
+    email: String
+    password: ID
+  }
 
   type Query {
     hello: String
     userStatus: ID
+    adminSignIn(email: String, password: String): Admin
   }
 
   type Mutation {

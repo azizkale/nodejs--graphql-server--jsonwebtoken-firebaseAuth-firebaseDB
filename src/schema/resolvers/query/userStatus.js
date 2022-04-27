@@ -1,4 +1,4 @@
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 const firebaseApp = require("../../../tools/firebaseTools");
 
 const userStatus = async() => {

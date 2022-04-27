@@ -6,11 +6,14 @@ import updateBook from './mutations/updateBook';
 import userStatus from './query/userStatus';
 import addBadge from './mutations/addBadge';
 import createGroup from './mutations/createGroup';
+import adminSignIn from './query/adminSignIn';
 
 const resolvers = {
     Query: {
         hello: hello,
-        userStatus
+        userStatus: userStatus,
+        adminSignIn: adminSignIn
+
     },
     Mutation: {
         signUpFirebase: signUpFirebase,
@@ -18,7 +21,7 @@ const resolvers = {
         addBookToUser: addBookToUser,
         updateBook: updateBook,
         addBadge: addBadge,
-        createGroup: createGroup
+        createGroup: createGroup,
     }
 }
 
