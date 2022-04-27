@@ -35,9 +35,8 @@ type Group {
   }
 
   type Mutation {
-    signUpFirebase(email:String, password:String): String
+    signUpFirebase(email:String, password:String, groupId: ID): String
     signInFirebase(email:String, password:String): String
-    createUser(name:String, email:String):User
     addBookToUser(name: String, totalPageCount:Int, userId:ID):Book
     updateBook(name:String, totalPageCount:Int, readPageCount:Int, userId:ID, bookId:ID):String
     addBadge(homework: Int, participating: Int, userId: ID):User
