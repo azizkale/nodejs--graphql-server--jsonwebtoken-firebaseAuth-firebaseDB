@@ -2,7 +2,7 @@ const { getAuth, createUserWithEmailAndPassword } = require("firebase/auth");
 const firebaseApp = require("../../../tools/firebaseTools");
 import { getDatabase, ref, set } from "firebase/database";
 
-const signUpFirebase = async(_, { email, password, name, groupId, groupname }) => {
+const signUpFirebase = async(_, { email, password, groupId, groupname }) => {
 
     const auth = await getAuth(firebaseApp);
     let accessToken;
@@ -26,7 +26,6 @@ const signUpFirebase = async(_, { email, password, name, groupId, groupname }) =
         //saving to firebaseDB
         const db = await getDatabase();
         await set(ref(db, 'groups/' + groupId + '/members/' + userId), {
-            name: name,
             email: email,
             userId: userId,
             groupname: groupname
