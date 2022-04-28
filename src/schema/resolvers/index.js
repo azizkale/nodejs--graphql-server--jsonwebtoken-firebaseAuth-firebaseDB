@@ -7,12 +7,14 @@ import userStatus from './query/userStatus';
 import addBadge from './mutations/addBadge';
 import createGroup from './mutations/createGroup';
 import adminSignIn from './query/adminSignIn';
+import getGroupsInfo from './query/getGroupsInfo';
 
 const resolvers = {
     Query: {
         hello: hello,
         userStatus: userStatus,
-        adminSignIn: adminSignIn
+        adminSignIn: adminSignIn,
+        getGroupsInfo: getGroupsInfo
 
     },
     Mutation: {

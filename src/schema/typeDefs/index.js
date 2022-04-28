@@ -38,6 +38,7 @@ const typeDefs = gql `
     hello: String
     userStatus: ID
     adminSignIn(email: String, password: String): Admin
+    getGroupsInfo:[Group]
   }
 
   type Mutation {
