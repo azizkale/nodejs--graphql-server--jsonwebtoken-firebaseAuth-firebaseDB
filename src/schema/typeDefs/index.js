@@ -26,7 +26,7 @@ const typeDefs = gql `
   type Group {
     name: String
     groupId: ID
-    mentor
+    mentor: Mentor
     members : [User]
   }
 
@@ -55,7 +55,7 @@ const typeDefs = gql `
     addBookToUser(name: String, totalPageCount:Int, userId:ID):Book
     updateBook(name:String, totalPageCount:Int, readPageCount:Int, userId:ID, bookId:ID):String
     addBadge(homework: Int, participating: Int, userId: ID):User
-    createGroup(name: String): Group
+    createGroup(mentoremail: String, groupname: String ): Group
   }
 `;
 module.exports = typeDefs;

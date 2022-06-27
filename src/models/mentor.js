@@ -1,8 +1,8 @@
 import User from './User';
 
 class Mentor {
-    constructor(email, mentorId, groupId, groupname) {
-        this.email = email;
+    constructor(mentoremail, mentorId, groupId, groupname) {
+        this.mentoremail = mentoremail;
         this.mentorId = mentorId;
         this.groupId = groupId;
         this.groupname = groupname;

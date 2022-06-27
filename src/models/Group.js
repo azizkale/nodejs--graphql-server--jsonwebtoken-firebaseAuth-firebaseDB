@@ -5,7 +5,6 @@ class Group {
         this.name = name;
         this.members = [User];
         this.groupId = groupId;
-        this.badges = [Badge];
         this.mentor = mentor
     }
 }
