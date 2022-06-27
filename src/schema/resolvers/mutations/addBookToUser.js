@@ -10,6 +10,7 @@ const addBookToUser = (_, { name, totalPageCount, userId }) => {
 
     const db = getDatabase(firebaseApp);
     set(ref(db, 'users/' + userId + '/books/' + bookId), {
+        bookId: bookId,
         name: name,
         totalPageCount: totalPageCount,
         readPageCount: 0

@@ -13,13 +13,20 @@ const typeDefs = gql `
   }
 
   type Badge {
-    homework: Int
-    participating: Int
+   name: String
+  }
+
+  type Mentor {
+    email: String
+    mentorId: ID 
+    groupId: ID
+    groupname: String
   }
 
   type Group {
     name: String
     groupId: ID
+    mentor
     members : [User]
   }
 
