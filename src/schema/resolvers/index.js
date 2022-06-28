@@ -8,6 +8,7 @@ import addBadge from './mutations/addBadge';
 import createGroup from './mutations/createGroup';
 import adminSignIn from './query/adminSignIn';
 import getGroupsInfo from './query/getGroupsInfo';
+import createMentor from './mutations/mentor/creatementor';
 
 const resolvers = {
     Query: {
@@ -20,6 +21,7 @@ const resolvers = {
     Mutation: {
         signUpFirebase: signUpFirebase,
         signInFirebase: signInFirebase,
+        createMentor: createMentor,
         addBookToUser: addBookToUser,
         updateBook: updateBook,
         addBadge: addBadge,

@@ -56,6 +56,7 @@ const typeDefs = gql `
     updateBook(name:String, totalPageCount:Int, readPageCount:Int, userId:ID, bookId:ID):String
     addBadge(homework: Int, participating: Int, userId: ID):User
     createGroup(mentorId: ID, mentoremail: String, groupname: String ): Group
+    createMentor(mentoremail: String, password: ID)
   }
 `;
 module.exports = typeDefs;
