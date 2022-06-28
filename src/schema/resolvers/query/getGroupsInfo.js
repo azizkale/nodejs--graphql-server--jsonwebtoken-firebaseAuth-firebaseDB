@@ -1,8 +1,5 @@
 import { getDatabase, ref, get } from "firebase/database";
 import firebaseApp from "../../../tools/firebaseTools";
-import User from "../../../models/User";
-import Book from "../../../models/Book";
-import Badge from "../../../models/Badge";
 import Group from "../../../models/Group";
 
 const getGroupsInfo = async() => {

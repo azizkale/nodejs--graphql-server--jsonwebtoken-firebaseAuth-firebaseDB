@@ -55,7 +55,7 @@ const typeDefs = gql `
     addBookToUser(name: String, totalPageCount:Int, userId:ID):Book
     updateBook(name:String, totalPageCount:Int, readPageCount:Int, userId:ID, bookId:ID):String
     addBadge(homework: Int, participating: Int, userId: ID):User
-    createGroup(mentoremail: String, groupname: String ): Group
+    createGroup(mentorId: ID, mentoremail: String, groupname: String ): Group
   }
 `;
 module.exports = typeDefs;

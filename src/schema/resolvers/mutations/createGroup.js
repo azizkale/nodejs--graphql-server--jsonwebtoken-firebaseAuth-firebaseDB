@@ -1,30 +1,34 @@
 import { getDatabase, ref, set } from "firebase/database";
 import firebaseApp from '../../../tools/firebaseTools';
 import Group from '../../../models/Group';
-import Mentor from '../../../models/mentor';
 
 const { v1: uuidv1, v4: uuidv4 } = require('uuid');
 
-const createGroup = async(_, { groupname, mentoremail }) => {
+const createGroup = async(_, { mentorId, groupname, mentoremail }) => {
     const groupId = uuidv1();
-    const mentorId = uuidv1();
-
-    const group = await new Group(groupname, groupId);
-    const mentor = await new Mentor(mentoremail, mentorId, groupId, groupname)
-
     const db = getDatabase(firebaseApp);
-    set(ref(db, 'groups/' + groupId), {
+
+    //control if mentor already exist, if not it creates new mentor
+    if (mentorId === null || mentorId === undefined) {
+        mentorId = uuidv1();
+
+        await set(ref(db, 'mentors/' + mentorId), {
+            mentor: {
+                mentoremail: mentoremail,
+                mentorId: mentorId,
+            }
+        });
+    }
+
+    //creating new group
+    await set(ref(db, 'mentors/' + mentorId + '/groups/' + groupId), {
         groupname: groupname,
         groupId: groupId,
         members: [],
-        mentor: {
-            mentoremail: mentoremail,
-            mentorId: mentorId,
-            groupId: groupId,
-            groupname: groupname
-
-        }
     });
+
+    const group = await new Group(groupname, groupId);
+
     return group;
 }
 
