@@ -1,25 +1,49 @@
 import { getDatabase, ref, set } from "firebase/database";
 import firebaseApp from '../../../../tools/firebaseTools';
-import Mentor from '../../../../models/mentor';
+const { getAuth, createUserWithEmailAndPassword } = require("firebase/auth");
 
-const { v1: uuidv1, v4: uuidv4 } = require('uuid');
+const createMentor = async(_, { mentoremail, password }) => {
 
-const createMentor = async() => {
-    const db = getDatabase(firebaseApp);
+    const auth = await getAuth(firebaseApp);
+    let accessToken;
+    await createUserWithEmailAndPassword(auth, mentoremail, password).
+    then(async(userCredential) => {
+        // Signed in 
+        accessToken = await userCredential.user.stsTokenManager.accessToken;
 
-    const mentorId = uuidv1();
-    //control if mentor already exist, if not it creates new mentor
-    const mentor = new Mentor(mentor, mentoremail)
+        let mentorId;
+        //getting userId from Firebase Authentication
+        await auth.onAuthStateChanged(async(mentor) => {
+            if (mentor) {
+                // User logged in already or has just logged in.
+                mentorId = await mentor.uid;
 
-    await set(ref(db, 'mentors/' + mentorId), {
-        mentor: {
-            mentoremail: mentoremail,
-            mentorId: mentorId,
-            groupname: groupname
-        }
+            } else {
+                // User not logged in or has just logged out.
+            }
+        });
+
+        //saving to firebaseDB
+        const db = await getDatabase();
+        await set(ref(db, 'mentors/' + mentorId), {
+            mentor: {
+                mentoremail: mentoremail,
+                mentorId: mentorId,
+            }
+        });
+
+        return accessToken;
+    }).catch((error) => {
+        const errorMessage = error.message;
+        return errorMessage;
     });
 
-    return group;
+
+    if (accessToken == null)
+        return "Please try again"
+    else return accessToken;
+
+
 }
 
 module.exports = createMentor;

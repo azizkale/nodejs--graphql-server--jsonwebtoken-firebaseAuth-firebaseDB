@@ -18,9 +18,9 @@ const typeDefs = gql `
 
   type Mentor {
     email: String
-    mentorId: ID 
-    groupId: ID
-    groupname: String
+    mentorId: ID
+    groups: [Group]
+    password: String 
   }
 
   type Group {
@@ -55,8 +55,8 @@ const typeDefs = gql `
     addBookToUser(name: String, totalPageCount:Int, userId:ID):Book
     updateBook(name:String, totalPageCount:Int, readPageCount:Int, userId:ID, bookId:ID):String
     addBadge(homework: Int, participating: Int, userId: ID):User
-    createGroup(mentorId: ID, mentoremail: String, groupname: String ): Group
-    createMentor(mentoremail: String, password: ID)
+    createGroup(mentorId: ID, groupname: String ): Group
+    createMentor(mentoremail: String, password: ID): String
   }
 `;
 module.exports = typeDefs;
