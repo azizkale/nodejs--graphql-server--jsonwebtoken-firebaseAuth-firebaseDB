@@ -48,17 +48,15 @@ const typeDefs = gql `
     userStatus: ID
     adminSignIn(email: String, password: String, role: String): Admin
     getGroupsInfo:[Group]
-    mentorSignIn(mentoremail: String, password: String): String
+    signInFirebase(email:String, password:String, role: String): String
   }
 
   type Mutation {
-    signUpFirebase(email:String, password:String, role: String): String
-    signInFirebase(email:String, password:String): String
+    signUpFirebase(email:String, password:String, role: String): String    
     addBookToUser(name: String, totalPageCount:Int, userId:ID):Book
     updateBook(name:String, totalPageCount:Int, readPageCount:Int, userId:ID, bookId:ID):String
     addBadge(homework: Int, participating: Int, userId: ID):User
     createGroup(mentorId: ID, groupname: String ): Group
-    createMentor(mentoremail: String, password: ID): String
   }
 `;
 module.exports = typeDefs;

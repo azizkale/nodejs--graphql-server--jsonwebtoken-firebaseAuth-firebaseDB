@@ -2,7 +2,6 @@ const { getAuth, signInWithEmailAndPassword } = require("firebase/auth");
 const firebaseApp = require("../../../tools/firebaseTools");
 
 const signInFirebase = async(_, { email, password, role }) => {
-
     const auth = await getAuth(firebaseApp);
     let accessToken;
 
@@ -16,7 +15,7 @@ const signInFirebase = async(_, { email, password, role }) => {
         return errorMessage;
     });
 
-    if (accessToken == null)
+    if (accessToken === null || role === null || role === undefined)
         return null
     else {
         const str = JSON.stringify({
