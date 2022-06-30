@@ -18,8 +18,8 @@ async function startApolloServer() {
 
     app.set('view engine', 'ejs');
 
-    app.get('/login', (req, res) => {
-        res.render('google-sing-in.ejs')
+    app.get('/', (req, res) => {
+        res.render('../src/views/index')
     });
 
     app.use((req, res) => {

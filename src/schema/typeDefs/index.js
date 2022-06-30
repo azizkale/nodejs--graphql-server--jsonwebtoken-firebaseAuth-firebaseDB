@@ -40,6 +40,7 @@ const typeDefs = gql `
   type Admin {
     email: String
     password: ID
+    role: String
   }
 
   type Query {
@@ -47,6 +48,7 @@ const typeDefs = gql `
     userStatus: ID
     adminSignIn(email: String, password: String): Admin
     getGroupsInfo:[Group]
+    mentorSignIn(mentoremail: String, password: String): String
   }
 
   type Mutation {

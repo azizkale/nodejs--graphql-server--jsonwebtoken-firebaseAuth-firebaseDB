@@ -9,13 +9,15 @@ import createGroup from './mutations/createGroup';
 import adminSignIn from './query/adminSignIn';
 import getGroupsInfo from './query/getGroupsInfo';
 import createMentor from './mutations/mentor/creatementor';
+import mentorSignIn from './query/mentor/mentorSignIn';
 
 const resolvers = {
     Query: {
         hello: hello,
         userStatus: userStatus,
         adminSignIn: adminSignIn,
-        getGroupsInfo: getGroupsInfo
+        getGroupsInfo: getGroupsInfo,
+        mentorSignIn: mentorSignIn
 
     },
     Mutation: {
