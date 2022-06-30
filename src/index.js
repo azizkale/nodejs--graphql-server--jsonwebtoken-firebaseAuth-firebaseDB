@@ -1,36 +1,16 @@
 const express = require('express');
-const { ApolloServer } = require('apollo-server-express');
+const { ApolloServer } = require('apollo-server');
 const resolvers = require("./schema/resolvers");
 const typeDefs = require("./schema/typeDefs");
 
-
 const PORT = process.env.PORT || 5000;
 
-async function startApolloServer() {
-    const app = express();
-    const server = new ApolloServer({
-        typeDefs,
-        resolvers,
-    });
-    await server.start();
 
-    server.applyMiddleware({ app });
+const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+});
 
-    app.set('view engine', 'ejs');
-
-    app.get('/', (req, res) => {
-        res.render('../src/views/index')
-    });
-
-    app.use((req, res) => {
-        res.status(200);
-        res.send('Hello!');
-        res.end();
-    });
-
-
-    await new Promise(resolve => app.listen(PORT, resolve));
-    console.log(`Server running on port http://localhost:${PORT}${server.graphqlPath}`)
-    return { server, app };
-}
-startApolloServer();
+server.listen({ port: PORT }).then(() => {
+    console.log(`🚀  Server ready at http://localhost:${PORT}`);
+});
