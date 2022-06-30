@@ -3,11 +3,8 @@ const firebaseApp = require("../../../tools/firebaseTools");
 import { getDatabase, ref, set } from "firebase/database";
 
 const signUpFirebase = async(_, { email, password, role }) => {
-
-
     const auth = await getAuth(firebaseApp);
     let accessToken;
-    let userId;
 
     //creating and saving user to firebase authenticate
     await createUserWithEmailAndPassword(auth, email, password).
@@ -15,41 +12,21 @@ const signUpFirebase = async(_, { email, password, role }) => {
         // Signed in 
         accessToken = await userCredential.user.stsTokenManager.accessToken;
 
+        //getting userId from Firebase Authentication
+        let userId;
+        await auth.onAuthStateChanged(async(user) => {
+            if (user) {
+                // User logged in already or has just logged in.
+                userId = await user.uid;
+            } else {
+                // User not logged in or has just logged out.
+            }
+        });
+
+        // ===== saving in firebase DB according to user's role
         if (role === "user") {
-            await auth.onAuthStateChanged(async(user) => {
-                if (user) {
-                    // User logged in already or has just logged in.
-                    userId = await user.uid;
-                } else {
-                    // User not logged in or has just logged out.
-                }
-            });
 
-            // ===== saving in firebase DB according to user's role
-
-            // }
-            // //saving to firebaseDB
-            //     const db = await getDatabase();
-            // await set(ref(db, 'groups/' + groupId + '/members/' + userId), {
-            //     email: email,
-            //     userId: userId,
-            //     groupname: groupname,
-            //     role: role
-            // });
-            return accessToken;
-        }
-        if (role === "mentor") {
-            await auth.onAuthStateChanged(async(user) => {
-                if (user) {
-                    // User logged in already or has just logged in.
-                    userId = await user.uid;
-                } else {
-                    // User not logged in or has just logged out.
-                }
-            });
-
-            // ===== saving in firebase DB according to user's role
-
+        } else if (role === "mentor") {
             //saving to firebaseDB
             const db = await getDatabase();
             await set(ref(db, 'mentors/' + userId), {
@@ -59,11 +36,8 @@ const signUpFirebase = async(_, { email, password, role }) => {
                     role: role
                 }
             });
-            return accessToken;
         }
-
-
-
+        return accessToken;
     }).catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
