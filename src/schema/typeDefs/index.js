@@ -48,7 +48,7 @@ const typeDefs = gql `
     userStatus: ID
     adminSignIn(email: String, password: String, role: String): Admin
     getGroupsInfo:[Group]
-    signInFirebase(email:String, password:String, role: String): String
+    signInFirebase(email:String, password:String): String
   }
 
   type Mutation {
