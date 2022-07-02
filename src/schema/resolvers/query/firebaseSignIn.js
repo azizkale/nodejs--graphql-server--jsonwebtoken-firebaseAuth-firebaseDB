@@ -25,7 +25,8 @@ const signInFirebase = async(_, { email, password }) => {
         });
 
         //encoding token
-        token = jwt.sign({ user: user, role: user.role }, secretkey);
+        // token = jwt.sign({ user: user, role: user.role }, secretkey);
+        token = jwt.sign({ user }, secretkey);
 
     }).catch((error) => {
         const errorCode = error.code;
