@@ -4,9 +4,8 @@ import { getDatabase, ref, get } from "firebase/database";
 import secretkey from "../../../tools/keypair";
 import jwt from "jsonwebtoken";
 
-const signInFirebase = async(_, { email, password }, context) => {
+const signInFirebase = async(_, { email, password }) => {
 
-    // console.log(jwt.decode(context.token).user.role)
     const auth = await getAuth(firebaseApp);
     let user, token, userId;
 

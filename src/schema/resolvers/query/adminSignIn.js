@@ -9,7 +9,7 @@ const adminSignIn = async(_, { email, password }) => {
     return get(ref(db, 'admin'))
         .then(async data => {
             if (data.val().email === email && data.val().password === password) {
-                const admin = await new Admin(email, password, "admin");
+                const admin = await new Admin(email, password, data.val().role);
                 return admin;
             }
             return null;
