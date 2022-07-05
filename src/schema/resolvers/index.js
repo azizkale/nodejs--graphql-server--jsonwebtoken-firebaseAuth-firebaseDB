@@ -7,7 +7,7 @@ import userStatus from './query/userStatus';
 import addBadge from './mutations/addBadge';
 import createGroup from './mutations/createGroup';
 import adminSignIn from './query/adminSignIn';
-import getGroupsInfo from './query/getGroupsInfo';
+import getGroups from './query/getGroups';
 import sendEmail from './query/sendingEmail';
 
 const resolvers = {
@@ -16,7 +16,7 @@ const resolvers = {
         signInFirebase: signInFirebase,
         userStatus: userStatus,
         adminSignIn: adminSignIn,
-        getGroupsInfo: getGroupsInfo,
+        getGroups: getGroups,
         sendEmail: sendEmail,
     },
     Mutation: {

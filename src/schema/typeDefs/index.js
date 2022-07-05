@@ -24,7 +24,7 @@ const typeDefs = gql `
   }
 
   type Group {
-    name: String
+    groupname: String
     groupId: ID
     mentor: Mentor
     members : [User]
@@ -47,7 +47,7 @@ const typeDefs = gql `
     hello: String
     userStatus: ID
     adminSignIn(email: String, password: String, role: String): Admin
-    getGroupsInfo:[Group]
+    getGroups(mentorId: String):[Group]
     signInFirebase(email:String, password:String): String
     sendEmail(mailFrom: String, mailTo: String, mailSubject: String, mailText: String): String
   }
