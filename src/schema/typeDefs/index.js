@@ -49,6 +49,8 @@ const typeDefs = gql `
     adminSignIn(email: String, password: String, role: String): Admin
     getGroupsInfo:[Group]
     signInFirebase(email:String, password:String): String
+    sendEmail(mailFrom: String, mailTo: String, mailSubject: String, mailText: String): String
+    resetPassword(email: String): String
   }
 
   type Mutation {

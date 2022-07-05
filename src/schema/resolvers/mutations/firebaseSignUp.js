@@ -1,6 +1,7 @@
 const { getAuth, createUserWithEmailAndPassword } = require("firebase/auth");
 const firebaseApp = require("../../../tools/firebaseTools");
 import { getDatabase, ref, set } from "firebase/database";
+import resetPassword from '../query/resetPasswordLink';
 
 const signUpFirebase = async(_, { email, password, role }) => {
     const auth = await getAuth(firebaseApp);

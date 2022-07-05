@@ -8,6 +8,8 @@ import addBadge from './mutations/addBadge';
 import createGroup from './mutations/createGroup';
 import adminSignIn from './query/adminSignIn';
 import getGroupsInfo from './query/getGroupsInfo';
+import sendEmail from './query/sendingEmail';
+import resetPassword from './query/resetPasswordLink';
 
 const resolvers = {
     Query: {
@@ -16,6 +18,8 @@ const resolvers = {
         userStatus: userStatus,
         adminSignIn: adminSignIn,
         getGroupsInfo: getGroupsInfo,
+        sendEmail: sendEmail,
+        resetPassword: resetPassword
     },
     Mutation: {
         signUpFirebase: signUpFirebase,
