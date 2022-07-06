@@ -1,5 +1,6 @@
 import { getDatabase, ref, get } from "firebase/database";
 import firebaseApp from "../../../tools/firebaseTools";
+import Group from '../../../models/Group';
 
 const getGroups = async(_, { mentorId }) => {
     const db = getDatabase(firebaseApp);
@@ -8,10 +9,12 @@ const getGroups = async(_, { mentorId }) => {
     return get(ref(db, path))
         .then(async data => {
             data.forEach((childSnapshot) => {
-                let group = {
-                    "groupname": childSnapshot.val().groupname,
-                    "groupId": childSnapshot.key
-                }
+
+                let group = new Group();
+                group.groupname = childSnapshot.val().groupname;
+                group.groupId = childSnapshot.key;
+                group.mentorId = mentorId;
+
                 listGroup.push(group);
             });
             return listGroup;

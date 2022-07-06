@@ -9,6 +9,7 @@ import createGroup from './mutations/createGroup';
 import adminSignIn from './query/adminSignIn';
 import getGroups from './query/getGroups';
 import sendEmail from './query/sendingEmail';
+import createUser from './mutations/createUser'
 
 const resolvers = {
     Query: {
@@ -25,6 +26,7 @@ const resolvers = {
         updateBook: updateBook,
         addBadge: addBadge,
         createGroup: createGroup,
+        createUser: createUser
     }
 }
 

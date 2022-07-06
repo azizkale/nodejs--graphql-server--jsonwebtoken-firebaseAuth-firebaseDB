@@ -4,12 +4,15 @@ const typeDefs = gql `
   type User {
     userId: ID
     email: String
-    username: String
-    password: String
     books: [Book]
     badges: [Badge]
-    groupId: ID
-    groupname: String
+    groups: [ID]
+    events: [Event]
+  }
+
+  type Event{
+    eventId: ID
+    eventName: String
   }
 
   type Badge {
@@ -20,13 +23,12 @@ const typeDefs = gql `
     email: String
     mentorId: ID
     groups: [Group]
-    password: String 
   }
 
   type Group {
     groupname: String
     groupId: ID
-    mentor: Mentor
+    mentorId: ID
     members : [User]
   }
 
@@ -58,6 +60,7 @@ const typeDefs = gql `
     updateBook(name:String, totalPageCount:Int, readPageCount:Int, userId:ID, bookId:ID):String
     addBadge(homework: Int, participating: Int, userId: ID):User
     createGroup(mentorId: ID, groupname: String ): Group
+    createUser(email: String, mentorId: ID, groupId: String, password: String): User
   }
 `;
 module.exports = typeDefs;
