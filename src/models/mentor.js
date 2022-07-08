@@ -5,6 +5,7 @@ class Mentor {
         this.mentoremail = mentoremail;
         this.mentorId = mentorId;
         this.groups = [Group];
+        this.role = "mentor"
     }
 }
 module.exports = Mentor;

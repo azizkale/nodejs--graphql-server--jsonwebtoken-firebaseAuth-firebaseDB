@@ -5,7 +5,8 @@ class User {
         this.groups = []; // IDs of user's groups
         this.badges = [] // IDs of user's badges       
         this.books = [];
-        this.events = []
+        this.events = [];
+        this.role = "user";
     }
 }
 module.exports = User;

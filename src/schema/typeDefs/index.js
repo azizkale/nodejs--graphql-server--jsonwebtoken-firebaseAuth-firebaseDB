@@ -4,6 +4,7 @@ const typeDefs = gql `
   type User {
     userId: ID
     email: String
+    role: String
     books: [Book]
     badges: [Badge]
     groups: [ID]
@@ -23,6 +24,7 @@ const typeDefs = gql `
     email: String
     mentorId: ID
     groups: [Group]
+    role: String
   }
 
   type Group {
@@ -55,7 +57,7 @@ const typeDefs = gql `
   }
 
   type Mutation {
-    signUpFirebase(email:String, password:String, role: String): String    
+    createMentor(email:String): Mentor    
     addBookToUser(name: String, totalPageCount:Int, userId:ID):Book
     updateBook(name:String, totalPageCount:Int, readPageCount:Int, userId:ID, bookId:ID):String
     addBadge(homework: Int, participating: Int, userId: ID):User

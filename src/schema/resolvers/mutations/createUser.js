@@ -9,17 +9,17 @@ import secretkey from "../../../tools/keypair";
 const db = getDatabase(firebaseApp);
 const auth = getAuth(firebaseApp);
 
-const createUser = async(_, { email, mentorId, groupId, password }, context) => {
+const createUser = async(_, { email, mentorId, groupId }, context) => {
 
-    let userId, accessToken;
+    let userId;
     const decodedToken = jwt.verify(context.token, secretkey);
+    const password = "123456"
 
     if (mentorId === decodedToken.user.userId) {
         //creating and saving user to firebase authenticate
         await createUserWithEmailAndPassword(auth, email, password).
         then(async(userCredential) => {
             // Signed in 
-            accessToken = await userCredential.user.stsTokenManager.accessToken;
 
             //getting userId from Firebase Authentication
             await auth.onAuthStateChanged(async(user) => {
@@ -34,6 +34,7 @@ const createUser = async(_, { email, mentorId, groupId, password }, context) => 
                             email: email,
                             userId: userId,
                             groups: [groupId],
+                            role: "user"
                         });
 
                     }
