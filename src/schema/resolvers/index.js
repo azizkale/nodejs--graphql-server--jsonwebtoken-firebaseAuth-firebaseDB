@@ -1,6 +1,6 @@
 const hello = require("./query/hello");
-const signUpFirebase = require("./mutations/firebaseSignUp");
-const signInFirebase = require("./query/firebaseSignIn");
+import createMentor from "./mutations/createMentor";
+import signInFirebase from "./query/firebaseSignIn";
 import addBookToUser from './mutations/addBookToUser';
 import updateBook from './mutations/updateBook';
 import userStatus from './query/userStatus';
@@ -21,7 +21,7 @@ const resolvers = {
         sendEmail: sendEmail,
     },
     Mutation: {
-        signUpFirebase: signUpFirebase,
+        createMentor: createMentor,
         addBookToUser: addBookToUser,
         updateBook: updateBook,
         addBadge: addBadge,
